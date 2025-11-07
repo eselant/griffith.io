@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>griffith</title>
+  <link rel="stylesheet" href="style-magazin.css">
+  <link rel="icon" href="img/theory-griffith-is-still-in-physical-pain-v0-wpc9dp6s80tf1.png" type="image/png">
+</head>
+<body>
+  <header>
+    <img src="img/1643425866_8-abrakadabra-fun-p-griffit-iz-berserka-16 (1) (1)-Photoroom.png" alt="sss">
+    <nav>
+      <a href="index.html">главная</a>
+      <a href="magazin.html">магазин</a>
+    </nav>
+    
+  </header>
+<div class="container">
+  <!-- Левая панель -->
+  <div class="sidebar">
+    <h3>Категории</h3>
+    <div class="category-list">
+      <div class="category active" data-category="Все">Все</div>
+      <div class="category" data-category="Толстовки на молнии">Толстовки на молнии</div>
+      <div class="category" data-category="Толстовки">Толстовки</div>
+      <div class="category" data-category="Футболки">Футболки</div>
+      <div class="category" data-category="Рашгарды">Рашгарды</div>
+    </div>
+
+    <div class="price-filter">
+      <label>Цена</label>
+      <input type="range" id="priceRange" min="2000" max="7000" value="7000">
+      <div class="price-values">
+        <span id="minPrice">2000 ₽</span>
+        <span id="maxPrice">7000 ₽</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="products" id="products"></div>
+
+<div id="cart-icon">0</div>
+<div id="cart-panel">
+  <h3>Корзина</h3>
+  <div id="cart-items"></div>
+  <button class="btn-pok">Купить</button>
+</div>
+
+
+<footer>
+   © 2025 griffith <span style="margin:0 8px;">|</span> Все права защищены
+</footer>
+
+
+  <script src="script-magazin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+/* --- Базовые стили --- */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* --- Header --- */
+header {
+  background-color: #000;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header img {
+  margin-left: 10px;
+  width: 90px;
+  font-weight: bold;
+}
+
+header nav a {
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 20px;
+  letter-spacing: 4px;
+  font-weight: 800;
+}
+
+/* --- Контейнер sidebar + контент --- */
+.container {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #0a0a0a;
+  padding: 20px;
+  border-right: 1px solid #111;
+  min-height: 100%;
+}
+
+.sidebar h3 {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category {
+  background: #111;
+  border: 1px solid #333;
+  padding: 10px;
+  cursor: pointer;
+  color: #ccc;
+  text-align: left;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.category.active {
+  background: #600;
+  border-color: #900;
+  color: #fff;
+}
+
+.category:hover {
+  background: #222;
+}
+
+/* --- Слайдер цены --- */
+.price-filter {
+  margin-top: 30px;
+}
+
+.price-filter label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.price-filter input[type="range"] {
+  width: 100%;
+}
+
+.price-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+/* --- Продукты --- */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.product {
+  background: #000;
+  border: 1px solid #111;
+  text-align: center;
+  transition: transform 0.3s ease;
+  padding-bottom: 20px;
+}
+
+.product:hover {
+  transform: scale(1.02);
+}
+
+.product img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+}
+
+.product h3 {
+  margin: 10px 0 5px;
+  color: #fff;
+}
+
+.price {
+  color: #fff;
+  font-weight: bold;
+}
+
+.old-price {
+  color: #a33;
+  text-decoration: line-through;
+  margin-left: 5px;
+}
+
+/* --- Кнопки --- */
+.btn {
+  background: rgb(0, 0, 0);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  margin-top: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+  border: 1px solid firebrick;
+  border-radius: 3px;
+}
+
+/* --- Корзина --- */
+#cart-icon {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background: url('img/pngtree-shopping-basket-icon-png-image_1871519.jpg') no-repeat center center;
+  background-size: 70px 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0px 10px rgb(255, 255, 255);
+  transition: transform 0.2s, opacity 0.3s;
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+#cart-icon.show { 
+  opacity: 1; 
+  transform: translateY(0); 
+}
+
+#cart-count {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  background: yellow;
+  color: #000;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+/* Панель корзины */
+#cart-panel {
+  position: fixed;
+  top: 0;
+  right: -380px;
+  width: 350px;
+  height: 100%;
+  background: #fff;
+  color: #000;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  z-index: 9998;
+}
+#cart-panel.open { right: 0; }
+
+#cart-panel h3 {
+  margin-left: 10px;
+}
+
+.cart-item {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+.cart-item img { width: 60px; height: 60px; object-fit: cover; margin-right: 10px; }
+.cart-item-info { flex:1; color: #000; }
+.cart-item-info span { display:block; }
+
+.cart-item-buttons button {
+  margin-right: 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.btn-pok {
+  background-color: #000;
+  margin-left: 10px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 141px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  color: #6b6b6b;
+  font-family: serif;
+  font-size: 20px;
+  border-top: 1px solid #5f5f5f;
+  padding: 20px 0;
+  margin-top: 30px;
+  background: #000;
+}
+
+footer span {
+  color: #fff;
+}
+
+/* --- Адаптивность --- */
+
+/* Планшеты (768px - 1024px) */
+@media (max-width: 1024px) {
+  .sidebar { width: 200px; padding: 15px; }
+  header nav a { font-size: 18px; margin: 0 10px; }
+  .product img { height: 280px; }
+  .btn-pok { padding: 10px 100px; font-size: 14px; }
+}
+
+/* Малые планшеты и большие смартфоны (600px - 767px) */
+@media (max-width: 767px) {
+  .container { flex-direction: column; }
+  .sidebar { width: 100%; min-height: auto; border-right: none; border-bottom: 1px solid #111; }
+  .content { padding: 20px; }
+  .products { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+  .product img { height: 250px; }
+  header nav a { font-size: 16px; margin: 0 8px; }
+  .btn-pok { padding: 10px 80px; font-size: 14px; }
+  #cart-icon { width: 50px; height: 50px; background-size: 60px 60px; }
+}
+
+/* Смартфоны (менее 480px) */
+@media (max-width: 480px) {
+  header { flex-direction: column; align-items: flex-start; }
+  header nav { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .products { grid-template-columns: 1fr; gap: 15px; }
+  .product img { height: 220px; }
+  .btn-pok { padding: 10px 50px; font-size: 12px; }
+  .sidebar { padding: 10px; }
+  .price-filter label, .price-values { font-size: 12px; }
+  #cart-panel { width: 100%; }
+}
