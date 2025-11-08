@@ -191,29 +191,11 @@ header nav a {
   transform: translateY(0); 
 }
 
-#cart-count {
-  position: absolute;
-  top: -5px;
-  left: -5px;
-  background: yellow;
-  color: #000;
-  width: 20px;
-  height: 20px;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  pointer-events: none;
-}
-
-/* Панель корзины */
 #cart-panel {
   position: fixed;
   top: 0;
   right: -380px;
-  width: 350px;
+  width: 350px; /* Ширина для десктопов */
   height: 100%;
   background: #fff;
   color: #000;
@@ -222,7 +204,24 @@ header nav a {
   overflow-y: auto;
   z-index: 9998;
 }
-#cart-panel.open { right: 0; }
+
+#cart-panel.open {
+  right: 0; /* Панель полностью выдвигается */
+}
+
+/* --- Адаптивность для маленьких экранов --- */
+
+/* Для устройств с шириной экрана меньше 480px (смартфоны) */
+@media (max-width: 480px) {
+  #cart-panel {
+    width: 100%; /* Убираем фиксированную ширину и делаем корзину на весь экран */
+    right: -100%; /* Корзина скрыта за пределами экрана */
+  }
+
+  #cart-panel.open {
+    right: 0; /* При открытии корзина будет выдвигаться на весь экран */
+  }
+}
 
 #cart-panel h3 {
   margin-left: 10px;
@@ -314,3 +313,4 @@ footer span {
   .price-filter label, .price-values { font-size: 12px; }
   #cart-panel { width: 100%; }
 }
+
